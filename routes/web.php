@@ -15,30 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'user'], function () {
-	Route::get('/', function () {
-		return 'User home';
-	});
-
-	Route::get('/{id}', function ($id) {
-		return $id;
-	});
-
-	/**
-	 * POST usually is used when something in database will be changed.
-	 * Or the data passes is not suitable to be shown.
-	 */
-	Route::post('/{id}', function ($id) {
-		return $id;
-	});
-
-});
-
-Route::group(['prefix' => 'student'], function () {
-	Route::get('/', 'StudentController@index');
-	Route::get('/{id}', 'StudentController@show');
-});
-
-Route::resource('post', 'PostController');
+Route::get('/user', 'UserController@index');
+Route::get('/user/{id}', 'UserController@get');
 
 
